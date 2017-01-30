@@ -5,7 +5,38 @@ abstract class Shape
   color block_colour;
 }
 
-class Line_shape
+//The following classes are each unique shapes as part of the game.
+class Line_shape extends Shape
+{
+  int start_y;
+  int start_x;
+}
+
+class Square_shape extends Shape
+{
+  int start_y;
+  int start_x;
+}
+
+class L_shape extends Shape
+{
+  int start_y;
+  int start_x;
+}
+
+class J_shape extends Shape
+{
+  int start_y;
+  int start_x;
+}
+
+class Tee_shape extends Shape
+{
+  int start_y;
+  int start_x;
+}
+
+class S_shape extends Shape
 {
   int start_y;
   int start_x;
