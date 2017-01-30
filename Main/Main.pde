@@ -5,16 +5,11 @@
 void setup()
 {
   //Setting the size of the screen.
-  size(400, 600);
+  size(420, 620);
+  background(0);
   
   menu_check = 0;
 }
-
-int menu_check;
-
-int i = 0;
-
-int border = 10, spacing = 20;
 
 void draw()
 {
@@ -32,23 +27,24 @@ void draw()
 //This code will produce the starting menu for the game.
 void display_menu()
 {
+  textAlign(CENTER);
+  textSize(40);
+  stroke(255);
   
   draw_grid();
   
-  textAlign(CENTER);
-  textSize(40);
-  
-  text("Play", width/2, height * 1/4);
-  text("Options", width/2, height * 1/2);
-  text("Exit", width/2, height * 3/4);
+  //text("Play", width/2, height * 1/4);
+  //text("Options", width/2, height * 1/2);
+  //text("Exit", width/2, height * 3/4);
 }
 
 //This will draw grid for both the start menu and in game.
 void draw_grid()
 {
-  i = 0;
-  int z = 0;
+  i = 0; 
+  z = 0;
   
+  //Drawing horizontal lines up until the edge of the screen
   while (i < height) 
   {
     line(border, border + (z * spacing), width - border, border + (z * spacing));
@@ -60,6 +56,7 @@ void draw_grid()
   i = 0;
   z = 0;
   
+  //Drawing vertical lines to complete the grid up until the end of the screen.
   while (i < width) 
   {
     line(border + (z * spacing), border, border + (z * spacing), height - border);
