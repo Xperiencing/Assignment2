@@ -16,12 +16,20 @@ class Line_shape extends Shape
 {
   int start_x;
   int start_y;
+  int [][] block_pos;
   
   Line_shape(color shape_colour, int x, int y)
   {
     super(shape_colour);
     start_x = x;
     start_y = y;
+    
+    //This maps out the positions of each of the blocks that make up the shape.
+    block_pos = new int [][]{{0, 0, 1, 0, -1, 0, -2, 0},
+                             {0, 0, 0, -1, 0, -2, 0, 1},
+                             {0, 0, 1, 0, -1, 0, -2, 0},
+                             {0, 0, 0, -1, 0, -2, 0, 1}
+                             };
   }
 }
 

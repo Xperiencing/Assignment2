@@ -9,6 +9,13 @@ void setup()
   background(0);
   
   menu_check = 0;
+  
+  //Calculating the number of rows and columns that are in the grid that will be drawn.
+  rows = (height - (border * 2))/spacing;
+  cols = (width - (border * 2))/spacing;
+  
+  mainGrid = new Grid(rows, cols);
+  
 }
 
 void draw()
@@ -21,6 +28,7 @@ void draw()
       display_menu();
     }
   }
+  
   
 }
 
@@ -65,4 +73,27 @@ void draw_grid()
     i += spacing;
   }
   
+}
+
+//The Grid class will be used to keep track of all blocks on the grid. 
+class Grid
+{
+  int rows, cols;
+  int [][] grid_array;
+  
+  Grid(int row, int col)
+  {
+    rows = row;
+    cols = col;
+    
+    grid_array = new int [rows][cols];
+    
+    for(i = 0; i < rows; i++)
+    {
+      for(z = 0; z < cols; z++)
+      {
+        grid_array[i][z] = 0;
+      }
+    } 
+  }
 }
