@@ -14,6 +14,7 @@ void setup()
   rows = (height - (border * 2))/spacing;
   cols = (width - (border * 2))/spacing;
   
+  //This creates a new object of the grid class using the rows and cols variables.
   mainGrid = new Grid(rows, cols);
   
 }
@@ -25,7 +26,7 @@ void draw()
   {
     case 0:
     {
-      display_menu();
+      draw_grid();
     }
   }
   
@@ -49,8 +50,7 @@ void display_menu()
 //This will draw grid for both the start menu and in game.
 void draw_grid()
 {
-  i = 0; 
-  z = 0;
+  i = 0; z = 0;
   
   //Drawing horizontal lines up until the edge of the screen
   while (i < height) 
@@ -61,8 +61,7 @@ void draw_grid()
     i += spacing;
   }
   
-  i = 0;
-  z = 0;
+  i = 0; z = 0;
   
   //Drawing vertical lines to complete the grid up until the end of the screen.
   while (i < width) 
@@ -75,25 +74,8 @@ void draw_grid()
   
 }
 
-//The Grid class will be used to keep track of all blocks on the grid. 
-class Grid
+
+void draw_blocks()
 {
-  int rows, cols;
-  int [][] grid_array;
-  
-  Grid(int row, int col)
-  {
-    rows = row;
-    cols = col;
     
-    grid_array = new int [rows][cols];
-    
-    for(i = 0; i < rows; i++)
-    {
-      for(z = 0; z < cols; z++)
-      {
-        grid_array[i][z] = 0;
-      }
-    } 
-  }
 }
