@@ -26,7 +26,7 @@ void draw()
   {
     case 0:
     {
-      draw_grid();
+      mainGrid.draw_grid();
     }
   }
   
@@ -40,40 +40,12 @@ void display_menu()
   textSize(40);
   stroke(255);
   
-  draw_grid();
+  mainGrid.draw_grid();
   
   //text("Play", width/2, height * 1/4);
   //text("Options", width/2, height * 1/2);
   //text("Exit", width/2, height * 3/4);
 }
-
-//This will draw grid for both the start menu and in game.
-void draw_grid()
-{
-  i = 0; z = 0;
-  
-  //Drawing horizontal lines up until the edge of the screen
-  while (i < height) 
-  {
-    line(border, border + (z * spacing), width - border, border + (z * spacing));
-    
-    z++;
-    i += spacing;
-  }
-  
-  i = 0; z = 0;
-  
-  //Drawing vertical lines to complete the grid up until the end of the screen.
-  while (i < width) 
-  {
-    line(border + (z * spacing), border, border + (z * spacing), height - border);
-    
-    z++;
-    i += spacing;
-  }
-  
-}
-
 
 void draw_blocks()
 {
