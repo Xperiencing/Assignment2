@@ -40,12 +40,14 @@ class Line_shape extends Shape
     y_pos = y;
     
     int temp_x, temp_y;
+    int [][] temp_positions = new int[4][2];
     
     //Saving the positions in temporary variables to allow them to be changed.
     temp_x = x_pos;
     temp_y = y_pos;
     
-    i = 0; 
+    //These variables are used again as indexes for the arrays.
+    i = 0; z = 0;
     
     while(i < 8)
     {
@@ -54,16 +56,34 @@ class Line_shape extends Shape
       
       if(temp_x < 0)
       {
-
-      }
-      else if(temp_y < 0)
-      {
+        //Resetting the while loop and starting again with a different source.
+        x_pos -= 1;
+        temp_x = x_pos;
         
+        i = 0; z = 0;
+      }
+      else if(temp_y > rows)
+      {
+        y_pos -= 1;
+        temp_y = y_pos;
+        
+        i = 0; z = 0;
       }
       else
       {
+        temp_positions[z][0] = temp_x;
+        temp_positions[z][1] = temp_y;
         
+        i += 2;
       }
+    }
+    
+    z = 0;
+    
+    //Finalising the block positions
+    for(i = 0; i < 4; i++)
+    {
+      mainGrid.grid_array[temp_positions[i][z]][temp_positions[i][z + 1]] = 1;     
     }
   }
 }

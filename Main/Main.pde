@@ -18,7 +18,7 @@ void setup()
   mainGrid = new Grid(rows, cols);
   
   //Creating a test shape for the game.
-  Line_shape a = new Line_shape(2, 2, 4, 5);
+  Line_shape a = new Line_shape(2, 2);
 }
 
 void draw()
