@@ -2,7 +2,7 @@
 class Grid
 {
   int rows, cols;
-  int [][] grid_array;
+  int [][] grid_data, grid_colour;
   
   Grid(int row, int col)
   {
@@ -10,13 +10,15 @@ class Grid
     cols = col;
     
     //Initialisng the grid array all to 0 for a fresh game.
-    grid_array = new int [rows][cols];
+    grid_data = new int [rows][cols];
+    grid_colour = new int [rows][cols];
     
     for(i = 0; i < rows; i++)
     {
       for(z = 0; z < cols; z++)
       {
-        grid_array[i][z] = 0;
+        grid_data[i][z] = 0;
+        grid_colour[i][z] = 0;
       }
     } 
   }
@@ -25,6 +27,8 @@ class Grid
   void draw_grid()
   {
     i = 0; z = 0;
+  
+    stroke(255);
   
     //Drawing horizontal lines up until the edge of the screen
     while (i < height) 
@@ -49,13 +53,25 @@ class Grid
   
   void draw_block()
   {
+    //source is used to start 
+    int source_x, source_y;
+    
     for(i = 0; i < rows; i++)
     {
       for(z = 0; z < cols; z++)
       {
-        if(grid_array[i][z] == 1)
+        if(grid_data[i][z] == 1)
         {
-          //Code for drawing block to go here.    
+          //Code for drawing blocks
+          source_x = border + (z * spacing);
+          source_y = border + (i * spacing);
+          
+          println("hi");
+          
+          //Drawing the outer colour of each block.
+          stroke(0);
+          fill(sec_shape_colour[2]);
+          rect(source_x, source_y, spacing, spacing);
         }
       }
     }

@@ -28,8 +28,10 @@ void draw()
   {
     case 0:
     {
-      a.plot();
+      Line_shape a = new Line_shape(2, 2);
+      a.plot(4, 5);
       mainGrid.draw_grid();
+      mainGrid.draw_block();
     }
   }
   
@@ -48,9 +50,4 @@ void display_menu()
   //text("Play", width/2, height * 1/4);
   //text("Options", width/2, height * 1/2);
   //text("Exit", width/2, height * 3/4);
-}
-
-void draw_blocks()
-{
-    
 }

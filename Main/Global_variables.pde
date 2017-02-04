@@ -24,3 +24,5 @@ color [] sec_shape_colour = {color(204, 0 , 0),
 //Variables used for the grid.
 Grid mainGrid;
 int rows, cols;
+
+int speed = 5;

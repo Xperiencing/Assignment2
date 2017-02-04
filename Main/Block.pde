@@ -75,15 +75,24 @@ class Line_shape extends Shape
         temp_positions[z][1] = temp_y;
         
         i += 2;
+        z += 1;
       }
     }
+    
+    for(i = 0; i < 4; i++)
+    {
+      println(temp_positions[i][0]);
+      println(temp_positions[i][1]);
+    }
+    
+    delay(20);
     
     z = 0;
     
     //Finalising the block positions
     for(i = 0; i < 4; i++)
     {
-      mainGrid.grid_array[temp_positions[i][z]][temp_positions[i][z + 1]] = 1;     
+      mainGrid.grid_data[temp_positions[i][z]][temp_positions[i][z + 1]] = 1;     
     }
   }
 }
