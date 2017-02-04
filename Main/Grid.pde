@@ -55,7 +55,7 @@ class Grid
       {
         if(grid_array[i][z] == 1)
         {
-          //Code for drawing block ot go here.    
+          //Code for drawing block to go here.    
         }
       }
     }

@@ -17,15 +17,14 @@ abstract class Shape
 //The following classes are each unique shapes as part of the game.
 class Line_shape extends Shape
 {
-  int x_pos;
-  int y_pos;
+  int x_pos, y_pos;
+  int cur_state;
   int [][] block_pos;
   
-  Line_shape(color prim_shape_colour, color sec_shape_colour, int x, int y)
+  Line_shape(color prim_shape_colour, color sec_shape_colour)
   {
     super(prim_shape_colour, sec_shape_colour);
-    x_pos = x;
-    y_pos = y;
+    cur_state = 1;
     
     //This maps out the positions of each of the blocks that make up the shape.
     block_pos = new int [][]{{0, 0, 1, 0, -1, 0, -2, 0},
@@ -33,6 +32,39 @@ class Line_shape extends Shape
                              {0, 0, 1, 0, -1, 0, -2, 0},
                              {0, 0, 0, -1, 0, -2, 0, 1}
                              };
+  }
+  
+  void plot(int x, int y)
+  {
+    x_pos = x;
+    y_pos = y;
+    
+    int temp_x, temp_y;
+    
+    //Saving the positions in temporary variables to allow them to be changed.
+    temp_x = x_pos;
+    temp_y = y_pos;
+    
+    i = 0; 
+    
+    while(i < 8)
+    {
+      temp_x += block_pos[cur_state][i];
+      temp_y += block_pos[cur_state][i + 1];
+      
+      if(temp_x < 0)
+      {
+
+      }
+      else if(temp_y < 0)
+      {
+        
+      }
+      else
+      {
+        
+      }
+    }
   }
 }
 
