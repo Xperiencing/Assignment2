@@ -51,7 +51,7 @@ class Grid
     }
   }
   
-  void draw_block()
+  void draw_block(int pick_colour)
   {
     //source is used to start 
     int source_x, source_y;
@@ -66,12 +66,20 @@ class Grid
           source_x = border + (z * spacing);
           source_y = border + (i * spacing);
           
-          println("hi");
-          
           //Drawing the outer colour of each block.
           stroke(0);
           fill(sec_shape_colour[2]);
           rect(source_x, source_y, spacing, spacing);
+          
+          //Creating a design on each of the individual blocks.
+          line(source_x, source_y, source_x + (spacing * 1/6), source_y + (spacing * 1/6));
+          line(source_x + spacing, source_y, source_x + (spacing * 5/6), source_y + (spacing * 1/6));
+          line(source_x, source_y + spacing, source_x + (spacing * 1/6), source_y + (spacing * 5/6));
+          line(source_x + spacing, source_y + spacing, source_x + (spacing * 5/6), source_y + (spacing * 5/6));
+          
+          //Adding the centre square to complete the block.
+          fill(prim_shape_colour[2]);
+          rect(source_x + (spacing * 1/6), source_y + (spacing * 1/6), spacing * 2/3, spacing * 2/3);
         }
       }
     }

@@ -16,9 +16,6 @@ void setup()
   
   //This creates a new object of the grid class using the rows and cols variables.
   mainGrid = new Grid(rows, cols);
-  
-  //Creating a test shape for the game.
-  Line_shape a = new Line_shape(2, 2);
 }
 
 void draw()
@@ -28,10 +25,16 @@ void draw()
   {
     case 0:
     {
+      //Creating a test shape for the game.
       Line_shape a = new Line_shape(2, 2);
+    }
+    
+    case 1:
+    {
+      //Plotting the shape, drawing the grid and all the individual blocks.
       a.plot(4, 5);
       mainGrid.draw_grid();
-      mainGrid.draw_block();
+      mainGrid.draw_block(int(random(0, 6)));
     }
   }
   

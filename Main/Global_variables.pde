@@ -25,4 +25,5 @@ color [] sec_shape_colour = {color(204, 0 , 0),
 Grid mainGrid;
 int rows, cols;
 
+//Variables for the tetris shapes.
 int speed = 5;
