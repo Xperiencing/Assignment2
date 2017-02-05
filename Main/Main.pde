@@ -26,7 +26,7 @@ void draw()
     case 0:
     {
       //Creating a test shape for the game.
-      Square_shape a = new Square_shape(2, 2);
+      J_shape a = new J_shape(2, 2);
     }
     
     case 1:
@@ -34,7 +34,7 @@ void draw()
       //Plotting the shape, drawing the grid and all the individual blocks.
       if(1 == 1)
       {
-        L_shape a = new L_shape(2, 2);  
+        J_shape a = new J_shape(2, 2);  
         a.plot(4, 3);
       }
       //a.plot(4, 5);
