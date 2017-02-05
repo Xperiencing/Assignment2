@@ -23,7 +23,7 @@ class Line_shape extends Shape
   Line_shape(color prim_shape_colour, color sec_shape_colour)
   {
     super(prim_shape_colour, sec_shape_colour);
-    cur_state = 1;
+    cur_state = 0;
     
     //This maps out the positions of each of the blocks that make up the shape.
     block_pos = new int [][]{{0, 0, 1, 0, -1, 0, -2, 0},
@@ -72,23 +72,18 @@ class Line_shape extends Shape
         
         i += 2;
         z += 1;
+        
+        temp_x = x;
+        temp_y = y;
       }
     }
-    
-    for(i = 0; i < 4; i++)
-    {
-      println(temp_positions[i][0]);
-      println(temp_positions[i][1]);
-    }
-    
-    delay(20);
     
     z = 0;
     
     //Finalising the block positions
     for(i = 0; i < 4; i++)
     {
-      mainGrid.grid_data[temp_positions[i][z]][temp_positions[i][z + 1]] = 1;     
+      mainGrid.grid_data[temp_positions[i][z + 1]][temp_positions[i][z]] = 1;     
     }
   }
 }
@@ -101,7 +96,7 @@ class Square_shape extends Shape
   Square_shape(color prim_shape_colour, color sec_shape_colour)
   {
     super(prim_shape_colour, sec_shape_colour);
-    cur_state = 1;
+    cur_state = 0;
     
     //This maps out the positions of each of the blocks that make up the shape.
     block_pos = new int [][]{{0, 0, -1, 0, -1, -1, 0, -1}};
@@ -146,23 +141,18 @@ class Square_shape extends Shape
         
         i += 2;
         z += 1;
+        
+        temp_x = x;
+        temp_y = y;
       }
     }
-    
-    for(i = 0; i < 4; i++)
-    {
-      println(temp_positions[i][0]);
-      println(temp_positions[i][1]);
-    }
-    
-    delay(20);
     
     z = 0;
     
     //Finalising the block positions
     for(i = 0; i < 4; i++)
     {
-      mainGrid.grid_data[temp_positions[i][z]][temp_positions[i][z + 1]] = 1;     
+      mainGrid.grid_data[temp_positions[i][z + 1]][temp_positions[i][z]] = 1;     
     }
   }
 }
@@ -175,13 +165,13 @@ class L_shape extends Shape
   L_shape(color prim_shape_colour, color sec_shape_colour)
   {
     super(prim_shape_colour, sec_shape_colour);
-    cur_state = 1;
+    cur_state = 0;
     
     //This maps out the positions of each of the blocks that make up the shape.
-    block_pos = new int [][]{{0, 0, 1, 0, -1, 0, -1, -1},
-                             {0, 0, 0, 1, 0, -1, 1, -1},
-                             {0, 0, -1, 0, 1, 0, 1, 1},
-                             {0, 0, 0, -1, 0, 1, -1, 1}
+    block_pos = new int [][]{{0, 0, 1, 0, -1, 0, -1, 1},
+                             {0, 0, 0, 1, 0, -1, 1, 1},
+                             {0, 0, -1, 0, 1, 0, 1, -1},
+                             {0, 0, 0, -1, 0, 1, -1, -1}
                              };
   }
   
@@ -224,37 +214,38 @@ class L_shape extends Shape
         
         i += 2;
         z += 1;
+        
+        temp_x = x;
+        temp_y = y;
       }
     }
-    
-    for(i = 0; i < 4; i++)
-    {
-      println(temp_positions[i][0]);
-      println(temp_positions[i][1]);
-    }
-    
-    delay(20);
     
     z = 0;
     
     //Finalising the block positions
     for(i = 0; i < 4; i++)
     {
-      mainGrid.grid_data[temp_positions[i][z]][temp_positions[i][z + 1]] = 1;     
+      mainGrid.grid_data[temp_positions[i][z + 1]][temp_positions[i][z]] = 1;     
     }
   }
 }
 
 class J_shape extends Shape
 {
-  int x_pos;
-  int y_pos;
+  int cur_state;
+  int [][] block_pos;
   
-  J_shape(color prim_shape_colour, color sec_shape_colour, int x, int y)
+  J_shape(color prim_shape_colour, color sec_shape_colour)
   {
     super(prim_shape_colour, sec_shape_colour);
-    x_pos = x;
-    y_pos = y;
+    cur_state = 1;
+    
+    //This maps out the positions of each of the blocks that make up the shape.
+    block_pos = new int [][]{{0, 0, 1, 0, -1, 0, -1, -1},
+                             {0, 0, 0, 1, 0, -1, 1, -1},
+                             {0, 0, -1, 0, 1, 0, 1, 1},
+                             {0, 0, 0, -1, 0, 1, -1, 1}
+                             };
   }
 }
 
