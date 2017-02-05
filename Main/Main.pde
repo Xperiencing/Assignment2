@@ -34,7 +34,7 @@ void draw()
       //Plotting the shape, drawing the grid and all the individual blocks.
       if(1 == 1)
       {
-        Z_shape a = new Z_shape(2, 2);  
+        S_shape a = new S_shape(2, 2);  
         a.plot(4, 3);
       }
       //a.plot(4, 5);
