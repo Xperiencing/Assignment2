@@ -32,6 +32,11 @@ void draw()
     case 1:
     {
       //Plotting the shape, drawing the grid and all the individual blocks.
+      if(1 == 1)
+      {
+        Line_shape a = new Line_shape(2, 2);  
+        a.plot(4, 5);
+      }
       a.plot(4, 5);
       mainGrid.draw_grid();
       mainGrid.draw_block(int(random(0, 6)));
