@@ -23,7 +23,7 @@ void setup()
   
   for(i = 0; i < 8; i+= 2)
   {
-    shape_pick [i] = int(random(0, 8));
+    shape_pick [i] = int(random(0, 7));
     shape_pick [i + 1] = int(random(0,6));
   }
 }

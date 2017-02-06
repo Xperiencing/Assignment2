@@ -38,3 +38,5 @@ J_shape j;
 Tee_shape tee;
 Z_shape zee;
 S_shape s;
+
+//Arraylist to store each of the objects.
