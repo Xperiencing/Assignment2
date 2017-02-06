@@ -1,4 +1,4 @@
-class J_shape extends Shape
+class J_shape extends Shape_base implements Shape
 {
   int cur_state;
   int [][] block_pos;

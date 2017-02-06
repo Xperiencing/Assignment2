@@ -1,4 +1,4 @@
-class L_shape extends Shape
+class L_shape extends Shape_base implements Shape
 {
   int cur_state;
   int [][] block_pos;
@@ -6,7 +6,7 @@ class L_shape extends Shape
   L_shape(color pri_colour, color sec_colour)
   {
     super(pri_colour, sec_colour);    
-    cur_state = 0;
+    cur_state = 2;
     
     //This maps out the positions of each of the blocks that make up the shape.
     block_pos = new int [][]{{0, 0, 1, 0, -1, 0, -1, 1},

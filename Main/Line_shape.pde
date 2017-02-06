@@ -1,5 +1,5 @@
 //The following classes are each unique shapes as part of the game.
-class Line_shape extends Shape
+class Line_shape extends Shape_base implements Shape
 {
   int cur_state;
   int [][] block_pos;
