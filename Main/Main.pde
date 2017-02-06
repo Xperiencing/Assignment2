@@ -109,6 +109,24 @@ void draw()
           shape_list.get(0).rotate_shape(1);
           delay(100);
         }
+        
+        //If the left or right keys are pressed the shape will translate appropriately 
+        if (keyCode == LEFT)
+        {
+          if(x_pos > 0)
+          {
+            x_pos--;
+          }
+          mainGrid.clear_grid();
+          delay(100);
+        }
+        
+        if(keyCode == RIGHT)
+        {
+          x_pos++;
+          mainGrid.clear_grid();
+          delay(100);
+        } 
       }
     }
   }
