@@ -20,9 +20,9 @@ class Line_shape extends Shape
   int cur_state;
   int [][] block_pos;
   
-  Line_shape(color prim_shape_colour, color sec_shape_colour)
+  Line_shape(color pri_colour, color sec_colour)
   {
-    super(prim_shape_colour, sec_shape_colour);
+    super(pri_colour, sec_colour);
     cur_state = 0;
     
     //This maps out the positions of each of the blocks that make up the shape.
@@ -93,9 +93,9 @@ class Square_shape extends Shape
   int cur_state;
   int [][] block_pos;
   
-  Square_shape(color prim_shape_colour, color sec_shape_colour)
+  Square_shape(color pri_colour, color sec_colour)
   {
-    super(prim_shape_colour, sec_shape_colour);
+    super(pri_colour, sec_colour);
     cur_state = 0;
     
     //This maps out the positions of each of the blocks that make up the shape.
@@ -162,9 +162,9 @@ class L_shape extends Shape
   int cur_state;
   int [][] block_pos;
   
-  L_shape(color prim_shape_colour, color sec_shape_colour)
+  L_shape(color pri_colour, color sec_colour)
   {
-    super(prim_shape_colour, sec_shape_colour);
+    super(pri_colour, sec_colour);    
     cur_state = 0;
     
     //This maps out the positions of each of the blocks that make up the shape.
@@ -235,9 +235,9 @@ class J_shape extends Shape
   int cur_state;
   int [][] block_pos;
   
-  J_shape(color prim_shape_colour, color sec_shape_colour)
+  J_shape(color pri_colour, color sec_colour)
   {
-    super(prim_shape_colour, sec_shape_colour);
+    super(pri_colour, sec_colour);
     cur_state = 0;
     
     //This maps out the positions of each of the blocks that make up the shape.
@@ -308,9 +308,9 @@ class Tee_shape extends Shape
   int cur_state;
   int [][] block_pos;
   
-  Tee_shape(color prim_shape_colour, color sec_shape_colour)
+  Tee_shape(color pri_colour, color sec_colour)
   {
-    super(prim_shape_colour, sec_shape_colour);
+    super(pri_colour, sec_colour);
     cur_state = 0;
     
     //This maps out the positions of each of the blocks that make up the shape.
@@ -382,9 +382,9 @@ class Z_shape extends Shape
   int cur_state;
   int [][] block_pos;
   
-  Z_shape(color prim_shape_colour, color sec_shape_colour)
+  Z_shape(color pri_colour, color sec_colour)
   {
-    super(prim_shape_colour, sec_shape_colour);
+    super(pri_colour, sec_colour);
     cur_state = 0;
     
     //This maps out the positions of each of the blocks that make up the shape.
@@ -455,9 +455,9 @@ class S_shape extends Shape
   int cur_state;
   int [][] block_pos;
   
-  S_shape(color prim_shape_colour, color sec_shape_colour)
+  S_shape(color pri_colour, color sec_colour)
   {
-    super(prim_shape_colour, sec_shape_colour);
+    super(pri_colour, sec_colour);
     cur_state = 3;
     
     //This maps out the positions of each of the blocks that make up the shape.

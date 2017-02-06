@@ -16,6 +16,16 @@ void setup()
   
   //This creates a new object of the grid class using the rows and cols variables.
   mainGrid = new Grid(rows, cols);
+  
+  //Creating the array that contins the different shape options aswell as 
+  //The random colours.
+  shape_pick = new int [8];
+  
+  for(i = 0; i < 8; i+= 2)
+  {
+    shape_pick [i] = int(random(0, 8));
+    shape_pick [i + 1] = int(random(0,6));
+  }
 }
 
 void draw()
@@ -26,7 +36,40 @@ void draw()
     case 0:
     {
       //Creating a test shape for the game.
-      J_shape a = new J_shape(2, 2);
+      if(shape_pick[0] == 0)
+      {
+        line = new Line_shape(prim_shape_colour[shape_pick[1]], sec_shape_colour[shape_pick[1]]);
+      }
+      
+      if(shape_pick[0] == 1)
+      {
+        square = new Square_shape(prim_shape_colour[shape_pick[1]], sec_shape_colour[shape_pick[1]]);
+      }
+      
+      if(shape_pick[0] == 2)
+      {
+        l = new L_shape(prim_shape_colour[shape_pick[1]], sec_shape_colour[shape_pick[1]]);
+      }
+      
+      if(shape_pick[0] == 3)
+      {
+        j = new J_shape(prim_shape_colour[shape_pick[1]], sec_shape_colour[shape_pick[1]]);
+      }
+      
+      if(shape_pick[0] == 4)
+      {
+        tee = new Tee_shape(prim_shape_colour[shape_pick[1]], sec_shape_colour[shape_pick[1]]);
+      }
+      
+      if(shape_pick[0] == 5)
+      {
+        zee = new Z_shape(prim_shape_colour[shape_pick[1]], sec_shape_colour[shape_pick[1]]);
+      }
+      
+      if(shape_pick[0] == 6)
+      {
+        s = new S_shape(prim_shape_colour[shape_pick[1]], sec_shape_colour[shape_pick[1]]);
+      }
     }
     
     case 1:
@@ -34,7 +77,7 @@ void draw()
       //Plotting the shape, drawing the grid and all the individual blocks.
       if(1 == 1)
       {
-        S_shape a = new S_shape(2, 2);  
+        L_shape a = new L_shape(2, 2);  
         a.plot(4, 3);
       }
       //a.plot(4, 5);

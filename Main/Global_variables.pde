@@ -27,3 +27,14 @@ int rows, cols;
 
 //Variables for the tetris shapes.
 int speed = 5;
+int x_pos, y_pos;
+int [] shape_pick;
+
+//Global objects for each shape.
+Line_shape line;
+Square_shape square;
+L_shape l;
+J_shape j;
+Tee_shape tee;
+Z_shape zee;
+S_shape s;
