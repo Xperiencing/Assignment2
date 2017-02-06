@@ -68,7 +68,7 @@ class Grid
           
           //Drawing the outer colour of each block.
           stroke(0);
-          fill(sec_shape_colour[2]);
+          fill(sec_shape_colour[pick_colour]);
           rect(source_x, source_y, spacing, spacing);
           
           //Creating a design on each of the individual blocks.
@@ -78,7 +78,7 @@ class Grid
           line(source_x + spacing, source_y + spacing, source_x + (spacing * 5/6), source_y + (spacing * 5/6));
           
           //Adding the centre square to complete the block.
-          fill(prim_shape_colour[2]);
+          fill(prim_shape_colour[pick_colour]);
           rect(source_x + (spacing * 1/6), source_y + (spacing * 1/6), spacing * 2/3, spacing * 2/3);
         }
       }

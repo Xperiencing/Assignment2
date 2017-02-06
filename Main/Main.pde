@@ -23,8 +23,8 @@ void setup()
   
   for(i = 0; i < 8; i+= 2)
   {
-    shape_pick [i] = int(random(0, 7));
-    shape_pick [i + 1] = int(random(0,6));
+    shape_pick [i] = (int)random(0, 7);
+    shape_pick [i + 1] = (int)random(0,6);
   }
 }
 
@@ -38,51 +38,53 @@ void draw()
       //Creating a test shape for the game.
       if(shape_pick[0] == 0)
       {
-        line = new Line_shape(prim_shape_colour[shape_pick[1]], sec_shape_colour[shape_pick[1]]);
+        shape_list.add(new Line_shape(shape_pick[1]));
       }
       
       if(shape_pick[0] == 1)
       {
-        square = new Square_shape(prim_shape_colour[shape_pick[1]], sec_shape_colour[shape_pick[1]]);
+        shape_list.add(new Square_shape(shape_pick[1]));
       }
       
       if(shape_pick[0] == 2)
       {
-        l = new L_shape(prim_shape_colour[shape_pick[1]], sec_shape_colour[shape_pick[1]]);
+        shape_list.add(new L_shape(shape_pick[1]));
       }
       
       if(shape_pick[0] == 3)
       {
-        j = new J_shape(prim_shape_colour[shape_pick[1]], sec_shape_colour[shape_pick[1]]);
+        shape_list.add(new J_shape(shape_pick[1]));
       }
       
       if(shape_pick[0] == 4)
       {
-        tee = new Tee_shape(prim_shape_colour[shape_pick[1]], sec_shape_colour[shape_pick[1]]);
+        shape_list.add(new Tee_shape(shape_pick[1]));
       }
       
       if(shape_pick[0] == 5)
       {
-        zee = new Z_shape(prim_shape_colour[shape_pick[1]], sec_shape_colour[shape_pick[1]]);
+        shape_list.add(new Z_shape(shape_pick[1]));
       }
       
       if(shape_pick[0] == 6)
       {
-        s = new S_shape(prim_shape_colour[shape_pick[1]], sec_shape_colour[shape_pick[1]]);
+        shape_list.add(new S_shape(shape_pick[1]));
       }
+      
+      x_pos = (int)random(0, cols - 1);
+      y_pos = 2;
+      
+      menu_check = 1;
     }
     
     case 1:
     {
       //Plotting the shape, drawing the grid and all the individual blocks.
-      if(1 == 1)
-      {
-        L_shape a = new L_shape(2, 2);  
-        a.plot(4, 3);
-      }
-      //a.plot(4, 5);
+      shape_list.get(0).plot(x_pos, y_pos);
       mainGrid.draw_grid();
-      mainGrid.draw_block(int(random(0, 6)));
+      
+      int pick_colour = shape_list.get(0).get_colour();
+      mainGrid.draw_block(pick_colour);
     }
   }
   

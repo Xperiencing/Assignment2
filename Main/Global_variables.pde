@@ -30,13 +30,5 @@ int speed = 5;
 int x_pos, y_pos;
 int [] shape_pick;
 
-//Global objects for each shape.
-Line_shape line;
-Square_shape square;
-L_shape l;
-J_shape j;
-Tee_shape tee;
-Z_shape zee;
-S_shape s;
-
 //Arraylist to store each of the objects.
+ArrayList<Shape> shape_list = new ArrayList<Shape>();

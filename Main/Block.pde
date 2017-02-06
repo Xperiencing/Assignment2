@@ -2,19 +2,91 @@
 abstract class Shape_base
 {
   float size;
-  color pr_block_colour;
-  color sec_block_colour;
+  int colour;
+  int cur_state;
+  int [][] block_pos;
   
-  Shape_base(color prim_shape_colour, color sec_shape_colour)
+  Shape_base(int c)
   {
-    pr_block_colour = prim_shape_colour;
-    sec_block_colour = sec_shape_colour;
+    colour = c;
     
     size = (width - (border * 2))/spacing;
   }
+  
+  void plot(int x, int y)
+  {
+    int temp_x, temp_y;
+    int [][] temp_positions = new int[4][2];
+    
+    //Saving the positions in temporary variables to allow them to be changed.
+    temp_x = x;
+    temp_y = y;
+    
+    //These variables are used again as indexes for the arrays.
+    i = 0; z = 0;
+    
+    while(i < 8)
+    {
+      temp_x += block_pos[cur_state][i];
+      temp_y += block_pos[cur_state][i + 1];
+      
+      if(temp_x < 0)
+      {
+        //Resetting the while loop and starting again with a different source.
+        x += 1;
+        temp_x = x;
+        
+        i = 0; z = 0;
+      }
+      
+      else if(temp_x > cols - 1)
+      {
+        //Resetting the while loop and starting again with a different source.
+        x -= 1;
+        temp_x = x;
+        
+        i = 0; z = 0;
+      }
+      
+      else if(temp_y > rows)
+      {
+        y -= 1;
+        temp_y = y;
+        
+        i = 0; z = 0;
+      }
+      
+      else
+      {
+        temp_positions[z][0] = temp_x;
+        temp_positions[z][1] = temp_y;
+        
+        i += 2;
+        z += 1;
+        
+        temp_x = x;
+        temp_y = y;
+      }
+    }
+    
+    z = 0;
+    
+    //Finalising the block positions
+    for(i = 0; i < 4; i++)
+    {
+      mainGrid.grid_data[temp_positions[i][z + 1]][temp_positions[i][z]] = 1;     
+    }
+  }
+  
+  int get_colour()
+  {
+    return(colour);
+  }
+  
 }
 
 interface Shape
 {
   void plot(int x, int y);
+  int get_colour();
 }
