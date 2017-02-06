@@ -26,6 +26,9 @@ void setup()
     shape_pick [i] = (int)random(0, 7);
     shape_pick [i + 1] = (int)random(0,6);
   }
+  
+  //Setting the start time.
+  start_time = millis();
 }
 
 void draw()
@@ -79,16 +82,24 @@ void draw()
     
     case 1:
     {
+      //Resetting the background each time.
+      background(0);
+      
       //Plotting the shape, drawing the grid and all the individual blocks.
       shape_list.get(0).plot(x_pos, y_pos);
       mainGrid.draw_grid();
       
       int pick_colour = shape_list.get(0).get_colour();
       mainGrid.draw_block(pick_colour);
+    
+      if(millis() > (start_time + 1000))
+      {
+        start_time = millis();
+        mainGrid.clear_grid();
+        y_pos++;  
+      }
     }
   }
-  
-  
 }
 
 //This code will produce the starting menu for the game.

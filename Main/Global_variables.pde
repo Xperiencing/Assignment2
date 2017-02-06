@@ -29,6 +29,9 @@ int rows, cols;
 int speed = 5;
 int x_pos, y_pos;
 int [] shape_pick;
+float start_time;
 
 //Arraylist to store each of the objects.
 ArrayList<Shape> shape_list = new ArrayList<Shape>();
+
+int j = 0;

@@ -84,4 +84,18 @@ class Grid
       }
     }
   }
+  
+  void clear_grid()
+  {
+    for(i = 0; i < rows; i++)
+    {
+      for(z = 0; z < cols; z++)
+      {
+        if(grid_data[i][z] == 1)
+        {
+          grid_data[i][z] = 0;
+        } 
+      }
+    }
+  }
 }
