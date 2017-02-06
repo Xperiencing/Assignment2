@@ -78,6 +78,26 @@ abstract class Shape_base
     }
   }
   
+  void rotate_shape(int num)
+  {
+    //Changing the state of the shape so it rotates
+    cur_state += num;
+    
+    //Making sure it stays in the bounds of the array.
+    if(cur_state < 0)
+    {
+      cur_state = 4;
+    }
+    
+    if(cur_state > 3)
+    {
+      cur_state = 0;  
+    }
+    
+    //Clearing the data when rotating.
+    mainGrid.clear_grid();
+  }
+  
   int get_colour()
   {
     return(colour);
@@ -88,5 +108,6 @@ abstract class Shape_base
 interface Shape
 {
   void plot(int x, int y);
+  void rotate_shape(int num);
   int get_colour();
 }

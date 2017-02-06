@@ -85,18 +85,30 @@ void draw()
       //Resetting the background each time.
       background(0);
       
-      //Plotting the shape, drawing the grid and all the individual blocks.
+      //Plotting the shape and drawing the grid.
       shape_list.get(0).plot(x_pos, y_pos);
       mainGrid.draw_grid();
       
+      //This is the code to draw the blocks that have been plotted on the grid.
       int pick_colour = shape_list.get(0).get_colour();
       mainGrid.draw_block(pick_colour);
-    
+      
+      //This code will clear any blocks that are not moving.
       if(millis() > (start_time + 1000))
       {
         start_time = millis();
         mainGrid.clear_grid();
         y_pos++;  
+      }
+      
+      if(keyPressed)
+      {
+        //Rotating the shape if the up key is pressed.
+        if (keyCode == UP)
+        {
+          shape_list.get(0).rotate_shape(1);
+          delay(100);
+        }
       }
     }
   }
