@@ -10,4 +10,9 @@ class Square_shape extends Shape_base implements Shape
     block_pos = new int [][]{{0, 0, -1, 0, -1, -1, 0, -1}};
   }
   
+  void rotate_shape()
+  {
+    
+  }
+  
 }

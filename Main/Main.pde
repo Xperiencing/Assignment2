@@ -86,7 +86,6 @@ void draw()
       background(0);
       
       //Plotting the shape and drawing the grid.
-      shape_list.get(0).plot(x_pos, y_pos);
       mainGrid.draw_grid();
       
       //This is the code to draw the blocks that have been plotted on the grid.
@@ -94,11 +93,13 @@ void draw()
       mainGrid.draw_block(pick_colour);
       
       //This code will clear any blocks that are not moving.
-      if(millis() > (start_time + 1000))
+      if(millis() > (start_time + 200))
       {
         start_time = millis();
         mainGrid.clear_grid();
         y_pos++;  
+        
+        
       }
       
       if(keyPressed)
@@ -117,13 +118,25 @@ void draw()
           {
             x_pos--;
           }
+          
           mainGrid.clear_grid();
+          
+          do
+          {
+            shape_list.get(0).plot(x_pos, y_pos);
+            shape_list.get(0).check_x();
+            
+          }while(result != 0);
+          
           delay(100);
         }
         
         if(keyCode == RIGHT)
         {
-          x_pos++;
+          if(x_pos < cols - 1)
+          {
+            x_pos++;
+          }
           mainGrid.clear_grid();
           delay(100);
         } 

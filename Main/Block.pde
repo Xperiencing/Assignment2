@@ -16,7 +16,7 @@ abstract class Shape_base
   void plot(int x, int y)
   {
     int temp_x, temp_y;
-    int [][] temp_positions = new int[4][2];
+    temp_positions = new int[4][2];
     
     //Saving the positions in temporary variables to allow them to be changed.
     temp_x = x;
@@ -30,53 +30,50 @@ abstract class Shape_base
       temp_x += block_pos[cur_state][i];
       temp_y += block_pos[cur_state][i + 1];
       
-      if(temp_x < 0)
-      {
-        //Resetting the while loop and starting again with a different source.
-        x += 1;
-        temp_x = x;
+      temp_positions[z][0] = temp_x;
+      temp_positions[z][1] = temp_y;
         
-        i = 0; z = 0;
+      //Incrementing the index variables.
+      i += 2;
+      z += 1;
+        
+      temp_x = x;
+      temp_y = y;
+    }
+    
+    x_pos = x;
+    y_pos = y;
+    z = 0;
+  }
+  
+  void check_x()
+  {
+    for(i = 0; i < 4; i++)
+    {
+      if(temp_positions[i][0] < 0)
+      {
+        result = 1;
       }
       
-      else if(temp_x > cols - 1)
+      else if(temp_positions[i][0] > (cols - 1))
       {
-        //Resetting the while loop and starting again with a different source.
-        x -= 1;
-        temp_x = x;
-        
-        i = 0; z = 0;
-      }
-      
-      else if(temp_y > rows)
-      {
-        y -= 1;
-        temp_y = y;
-        
-        i = 0; z = 0;
+        result = -1;
       }
       
       else
       {
-        temp_positions[z][0] = temp_x;
-        temp_positions[z][1] = temp_y;
-        
-        i += 2;
-        z += 1;
-        
-        temp_x = x;
-        temp_y = y;
+        result = 0;
       }
     }
-    
-    z = 0;
-    
-    //Finalising the block positions
-    for(i = 0; i < 4; i++)
-    {
-      mainGrid.grid_data[temp_positions[i][z + 1]][temp_positions[i][z]] = 1;     
-    }
   }
+  
+  /*void check_y()
+  {
+    if(temp_y > rows - 1 || mainGrid.grid_data[temp_y + 1][temp_x] == 2)
+    {
+      function_check = 1;
+    }  
+  }*/
   
   void rotate_shape(int num)
   {
@@ -109,5 +106,6 @@ interface Shape
 {
   void plot(int x, int y);
   void rotate_shape(int num);
+  void check_x();
   int get_colour();
 }

@@ -1,4 +1,5 @@
-int menu_check = 0;
+int menu_check = 0, function_check = 0;
+int result;
 
 //Index variables used for counters and for loops.
 int i = 0, z = 0;
@@ -30,6 +31,8 @@ int speed = 5;
 int x_pos, y_pos;
 int [] shape_pick;
 float start_time;
+
+int [][] temp_positions;
 
 //Arraylist to store each of the objects.
 ArrayList<Shape> shape_list = new ArrayList<Shape>();
