@@ -38,8 +38,7 @@ void draw()
   {
     case 0:
     {
-      
-      
+      add_arraylist();
       menu_check = 1;
     }
     
@@ -52,7 +51,7 @@ void draw()
       mainGrid.draw_grid();
       
       //This code will clear any blocks that are not moving.
-      if(millis() > (start_time + 1000))
+      if(millis() > (start_time + 200))
       {
         start_time = millis();
         mainGrid.clear_grid();
@@ -68,6 +67,8 @@ void draw()
           
           shape_list.get(0).get_position(x_pos, y_pos);
           shape_list.get(0).plot(2);
+          
+          create_shape();
         } 
       }
       
@@ -166,42 +167,42 @@ void display_menu()
 
 void add_arraylist()
 {
-  for(i = 0; i < 8; i += 2)
+  for(i = 0; i < shape_pick.length; i += 2)
   {
     //Creating a test shape for the game.
     if(shape_pick[i] == 0)
     {
-      shape_list.add(new Line_shape(shape_pick[1]));
+      shape_list.add(new Line_shape(shape_pick[i + 1]));
     }
         
     if(shape_pick[i] == 1)
     {
-      shape_list.add(new Square_shape(shape_pick[1]));
+      shape_list.add(new Square_shape(shape_pick[i + 1]));
     }
         
     if(shape_pick[i] == 2)
     {
-      shape_list.add(new L_shape(shape_pick[1]));
+      shape_list.add(new L_shape(shape_pick[i + 1]));
     }                
         
     if(shape_pick[i] == 3)
     {
-      shape_list.add(new J_shape(shape_pick[1]));
+      shape_list.add(new J_shape(shape_pick[i + 1]));
     }
         
     if(shape_pick[i] == 4)
     {
-      shape_list.add(new Tee_shape(shape_pick[1]));
+      shape_list.add(new Tee_shape(shape_pick[i + 1]));
     }
          
     if(shape_pick[i] == 5)
     {
-      shape_list.add(new Z_shape(shape_pick[1]));
+      shape_list.add(new Z_shape(shape_pick[i + 1]));
     }        
         
     if(shape_pick[i] == 6)
     {
-      shape_list.add(new S_shape(shape_pick[1]));
+      shape_list.add(new S_shape(shape_pick[i + 1]));
     }        
   } 
       
@@ -219,7 +220,7 @@ void add_arraylist()
 }
 
 //This will add a new shape onto the queue
-void add_shape()
+void create_shape()
 {
   int [] temp_array =  new int [shape_pick.length];
   for(i = 2, z = 0; i < 8; i += 2, z += 2)
@@ -234,4 +235,15 @@ void add_shape()
   temp_array[z + 1] = (int)random(0,6);
   
   shape_pick = temp_array;
+  
+  remove_arraylist();
+  add_arraylist();
+}
+
+void remove_arraylist()
+{
+  for(i = 0; i < shape_list.size(); i++)
+  {
+    shape_list.remove(i);
+  }
 }

@@ -74,7 +74,7 @@ abstract class Shape_base
     for(i = 0; i < 4; i++)
     {
       mainGrid.grid_data[temp_positions[i][1]][temp_positions[i][0]] = type;
-      mainGrid.grid_colour[temp_positions[i][1]][temp_positions[i][0]] = this.colour;
+      mainGrid.grid_colour[temp_positions[i][1]][temp_positions[i][0]] = colour;
     }
   }
   
@@ -88,6 +88,18 @@ abstract class Shape_base
         result = -1;
         break;
       }
+      
+      else if(mainGrid.grid_data[temp_positions[i][1]][temp_positions[i][0]] == 2)
+      {
+        result = -1;
+        break;
+      }
+      
+      else
+      {
+        result = 0;  
+      }
+      
     }
   }
   
