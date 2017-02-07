@@ -85,6 +85,7 @@ class Grid
     }
   }
   
+  //This function clears the grid of all shapes not set.
   void clear_grid()
   {
     for(i = 0; i < rows; i++)
@@ -99,8 +100,33 @@ class Grid
     }
   }
   
-  void set_shape()
+  //Checking the grid to see if any lines are complete.
+  void check_lines()
   {
-      
+    for(i = 0; i < rows; i++)
+    {
+      for(z = 0; z < cols - 1; z++)
+      {
+        if(grid_data[i][z] == grid_data[i][z + 1])
+        {
+          result = 1;
+          
+          if(z + 1 == cols - 1)
+          {
+            clear_line(i);
+          }
+        }
+        else
+        {
+          result = 0;
+          break;  
+        }
+      }
+    }
+  }
+  
+  void clear_line(int row)
+  {
+    
   }
 }

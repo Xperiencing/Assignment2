@@ -138,7 +138,7 @@ void draw()
           {
             if(result != 0)
             {
-              x_pos++;
+              x_pos--;
             }
             
             shape_list.get(0).get_position(x_pos, y_pos);
