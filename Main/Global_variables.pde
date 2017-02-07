@@ -27,7 +27,7 @@ Grid mainGrid;
 int rows, cols;
 
 //Variables for the tetris shapes.
-int speed = 5;
+int speed = 1000;
 int x_pos, y_pos;
 int [] shape_pick;
 float start_time;

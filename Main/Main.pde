@@ -51,7 +51,7 @@ void draw()
       mainGrid.draw_grid();
       
       //This code will clear any blocks that are not moving.
-      if(millis() > (start_time + 200))
+      if(millis() > (start_time + speed))
       {
         start_time = millis();
         mainGrid.clear_grid();
@@ -90,6 +90,11 @@ void draw()
           }while(result != 0);
           
           delay(100);
+        }
+        
+        if (keyCode == DOWN)
+        {
+          speed = 200;
         }
         
         //If the left or right keys are pressed the shape will translate appropriately 
@@ -245,5 +250,13 @@ void remove_arraylist()
   for(i = 0; i < shape_list.size(); i++)
   {
     shape_list.remove(i);
+  }
+}
+
+void keyReleased()
+{
+  if (keyCode == DOWN)
+  {
+    speed = 1000;  
   }
 }
