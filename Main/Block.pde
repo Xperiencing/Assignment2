@@ -62,6 +62,12 @@ abstract class Shape_base
         break;
       }
       
+      else if(mainGrid.grid_data[temp_positions[i][1]][temp_positions[i][0]] == 2)
+      {
+        result = 1;
+        break;
+      }
+      
       else
       {
         result = 0;

@@ -110,7 +110,11 @@ void draw()
           //Error checking to make sure the shape stays within the grid.
           do
           {
-            x_pos += result;
+            //Changing position if out of bounds.
+            if(result != 0)
+            {
+              x_pos++;
+            }
             
             shape_list.get(0).get_position(x_pos, y_pos);
             shape_list.get(0).check_x();
@@ -132,7 +136,10 @@ void draw()
           
           do
           {
-            x_pos += result;
+            if(result != 0)
+            {
+              x_pos++;
+            }
             
             shape_list.get(0).get_position(x_pos, y_pos);
             shape_list.get(0).check_x();
