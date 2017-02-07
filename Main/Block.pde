@@ -69,11 +69,12 @@ abstract class Shape_base
     }
   }
   
-  void plot()
-  {
+  void plot(int type)
+  { 
     for(i = 0; i < 4; i++)
     {
-      mainGrid.grid_data[temp_positions[i][1]][temp_positions[i][0]] = 1;
+      mainGrid.grid_data[temp_positions[i][1]][temp_positions[i][0]] = type;
+      mainGrid.grid_colour[temp_positions[i][1]][temp_positions[i][0]] = this.colour;
     }
   }
   
@@ -82,7 +83,7 @@ abstract class Shape_base
   {
     for(i = 0; i < 4; i++)
     {
-      if(temp_positions[i][1] > (cols - 1))
+      if(temp_positions[i][1] > (rows - 1))
       {
         result = -1;
         break;
@@ -90,20 +91,15 @@ abstract class Shape_base
     }
   }
   
-  void rotate_shape(int num)
+  void rotate_shape()
   {
     //Changing the state of the shape so it rotates
-    cur_state += num;
+    cur_state -= 1;
     
     //Making sure it stays in the bounds of the array.
     if(cur_state < 0)
     {
-      cur_state = 4;
-    }
-    
-    if(cur_state > 3)
-    {
-      cur_state = 0;  
+      cur_state = 3;
     }
     
     //Clearing the data when rotating.
@@ -120,8 +116,8 @@ abstract class Shape_base
 interface Shape
 {
   void get_position(int x, int y); 
-  void plot();
-  void rotate_shape(int num);
+  void plot(int type);
+  void rotate_shape();
   
   void check_x();
   void check_y();

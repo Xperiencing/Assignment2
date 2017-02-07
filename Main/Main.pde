@@ -38,53 +38,7 @@ void draw()
   {
     case 0:
     {
-      //Creating a test shape for the game.
-      if(shape_pick[0] == 0)
-      {
-        shape_list.add(new Line_shape(shape_pick[1]));
-      }
       
-      if(shape_pick[0] == 1)
-      {
-        shape_list.add(new Square_shape(shape_pick[1]));
-      }
-      
-      if(shape_pick[0] == 2)
-      {
-        shape_list.add(new L_shape(shape_pick[1]));
-      }
-      
-      if(shape_pick[0] == 3)
-      {
-        shape_list.add(new J_shape(shape_pick[1]));
-      }
-      
-      if(shape_pick[0] == 4)
-      {
-        shape_list.add(new Tee_shape(shape_pick[1]));
-      }
-      
-      if(shape_pick[0] == 5)
-      {
-        shape_list.add(new Z_shape(shape_pick[1]));
-      }
-      
-      if(shape_pick[0] == 6)
-      {
-        shape_list.add(new S_shape(shape_pick[1]));
-      }
-      
-      x_pos = (int)random(0, cols - 1);
-      y_pos = 2;
-      
-      do
-      {
-        shape_list.get(0).get_position(x_pos, y_pos);
-        shape_list.get(0).check_x();
-            
-      }while(result != 0);
-          
-      shape_list.get(0).plot();
       
       menu_check = 1;
     }
@@ -113,7 +67,7 @@ void draw()
           y_pos--;
           
           shape_list.get(0).get_position(x_pos, y_pos);
-          shape_list.get(0).plot();
+          shape_list.get(0).plot(2);
         } 
       }
       
@@ -123,7 +77,17 @@ void draw()
         //Rotating the shape if the up key is pressed.
         if (keyCode == UP)
         {
-          shape_list.get(0).rotate_shape(1);
+          shape_list.get(0).rotate_shape();
+          
+          do
+          {
+            x_pos += result;
+            
+            shape_list.get(0).get_position(x_pos, y_pos);
+            shape_list.get(0).check_x();
+            
+          }while(result != 0);
+          
           delay(100);
         }
         
@@ -148,7 +112,7 @@ void draw()
           }while(result != 0);
           
           //After error checking 
-          shape_list.get(0).plot();
+          shape_list.get(0).plot(1);
           delay(100);
         }
         
@@ -169,7 +133,7 @@ void draw()
             
           }while(result != 0);
           
-          shape_list.get(0).plot();
+          shape_list.get(0).plot(1);
           delay(100);
         } 
       }
@@ -177,11 +141,11 @@ void draw()
       //If no movement takes place apart from the  constant downward movement
       //The shape will still have to re-map itself.
       shape_list.get(0).get_position(x_pos, y_pos);
-      shape_list.get(0).plot();
+      shape_list.get(0).plot(1);
       
       //This is the code to draw the blocks that have been plotted on the grid.
-      int pick_colour = shape_list.get(0).get_colour();
-      mainGrid.draw_block(pick_colour);
+      shape_list.get(0).get_colour();
+      mainGrid.draw_block();
     }
   }
 }
@@ -198,4 +162,76 @@ void display_menu()
   //text("Play", width/2, height * 1/4);
   //text("Options", width/2, height * 1/2);
   //text("Exit", width/2, height * 3/4);
+}
+
+void add_arraylist()
+{
+  for(i = 0; i < 8; i += 2)
+  {
+    //Creating a test shape for the game.
+    if(shape_pick[i] == 0)
+    {
+      shape_list.add(new Line_shape(shape_pick[1]));
+    }
+        
+    if(shape_pick[i] == 1)
+    {
+      shape_list.add(new Square_shape(shape_pick[1]));
+    }
+        
+    if(shape_pick[i] == 2)
+    {
+      shape_list.add(new L_shape(shape_pick[1]));
+    }                
+        
+    if(shape_pick[i] == 3)
+    {
+      shape_list.add(new J_shape(shape_pick[1]));
+    }
+        
+    if(shape_pick[i] == 4)
+    {
+      shape_list.add(new Tee_shape(shape_pick[1]));
+    }
+         
+    if(shape_pick[i] == 5)
+    {
+      shape_list.add(new Z_shape(shape_pick[1]));
+    }        
+        
+    if(shape_pick[i] == 6)
+    {
+      shape_list.add(new S_shape(shape_pick[1]));
+    }        
+  } 
+      
+  x_pos = (int)random(0, cols - 1);
+  y_pos = 2;
+      
+  do
+  {
+    shape_list.get(0).get_position(x_pos, y_pos);
+    shape_list.get(0).check_x();
+            
+  }while(result != 0);
+          
+  shape_list.get(0).plot(1);    
+}
+
+//This will add a new shape onto the queue
+void add_shape()
+{
+  int [] temp_array =  new int [shape_pick.length];
+  for(i = 2, z = 0; i < 8; i += 2, z += 2)
+  {
+    temp_array[z] = shape_pick[i];
+    temp_array[z + 1] = shape_pick[i + 1];
+  }
+  
+  z = 6;
+  
+  temp_array[z] = (int)random(0, 7);
+  temp_array[z + 1] = (int)random(0,6);
+  
+  shape_pick = temp_array;
 }
