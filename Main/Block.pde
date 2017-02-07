@@ -53,11 +53,13 @@ abstract class Shape_base
       if(temp_positions[i][0] < 0)
       {
         result = 1;
+        break;
       }
       
       else if(temp_positions[i][0] > (cols - 1))
       {
         result = -1;
+        break;
       }
       
       else
@@ -76,13 +78,17 @@ abstract class Shape_base
   }
   
   
-  /*void check_y()
+  void check_y()
   {
-    if(temp_y > rows - 1 || mainGrid.grid_data[temp_y + 1][temp_x] == 2)
+    for(i = 0; i < 4; i++)
     {
-      function_check = 1;
-    }  
-  }*/
+      if(temp_positions[i][1] > (cols - 1))
+      {
+        result = -1;
+        break;
+      }
+    }
+  }
   
   void rotate_shape(int num)
   {
@@ -116,6 +122,9 @@ interface Shape
   void get_position(int x, int y); 
   void plot();
   void rotate_shape(int num);
+  
   void check_x();
+  void check_y();
+  
   int get_colour();
 }

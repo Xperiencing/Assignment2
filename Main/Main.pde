@@ -102,9 +102,22 @@ void draw()
       {
         start_time = millis();
         mainGrid.clear_grid();
-        y_pos++;   
+        y_pos++;
+        
+        //Checking if the shape can go further.
+        shape_list.get(0).get_position(x_pos, y_pos);
+        shape_list.get(0).check_y();
+        
+        if(result != 0)
+        {
+          y_pos--;
+          
+          shape_list.get(0).get_position(x_pos, y_pos);
+          shape_list.get(0).plot();
+        } 
       }
       
+      //This if statement contains all control for moving the current tetris shape.
       if(keyPressed)
       {
         //Rotating the shape if the up key is pressed.
@@ -124,15 +137,17 @@ void draw()
           
           mainGrid.clear_grid();
           
-          println("hi");
-          
+          //Error checking to make sure the shape stays within the grid.
           do
           {
+            x_pos += result;
+            
             shape_list.get(0).get_position(x_pos, y_pos);
             shape_list.get(0).check_x();
             
           }while(result != 0);
           
+          //After error checking 
           shape_list.get(0).plot();
           delay(100);
         }
@@ -147,6 +162,8 @@ void draw()
           
           do
           {
+            x_pos += result;
+            
             shape_list.get(0).get_position(x_pos, y_pos);
             shape_list.get(0).check_x();
             
@@ -157,6 +174,8 @@ void draw()
         } 
       }
       
+      //If no movement takes place apart from the  constant downward movement
+      //The shape will still have to re-map itself.
       shape_list.get(0).get_position(x_pos, y_pos);
       shape_list.get(0).plot();
       

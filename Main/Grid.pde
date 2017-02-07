@@ -98,4 +98,9 @@ class Grid
       }
     }
   }
+  
+  void set_shape()
+  {
+      
+  }
 }
