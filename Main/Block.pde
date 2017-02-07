@@ -13,7 +13,7 @@ abstract class Shape_base
     size = (width - (border * 2))/spacing;
   }
   
-  void plot(int x, int y)
+  void get_position(int x, int y)
   {
     int temp_x, temp_y;
     temp_positions = new int[4][2];
@@ -67,6 +67,15 @@ abstract class Shape_base
     }
   }
   
+  void plot()
+  {
+    for(i = 0; i < 4; i++)
+    {
+      mainGrid.grid_data[temp_positions[i][1]][temp_positions[i][0]] = 1;
+    }
+  }
+  
+  
   /*void check_y()
   {
     if(temp_y > rows - 1 || mainGrid.grid_data[temp_y + 1][temp_x] == 2)
@@ -104,7 +113,8 @@ abstract class Shape_base
 
 interface Shape
 {
-  void plot(int x, int y);
+  void get_position(int x, int y); 
+  void plot();
   void rotate_shape(int num);
   void check_x();
   int get_colour();

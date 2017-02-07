@@ -77,6 +77,15 @@ void draw()
       x_pos = (int)random(0, cols - 1);
       y_pos = 2;
       
+      do
+      {
+        shape_list.get(0).get_position(x_pos, y_pos);
+        shape_list.get(0).check_x();
+            
+      }while(result != 0);
+          
+      shape_list.get(0).plot();
+      
       menu_check = 1;
     }
     
@@ -88,18 +97,12 @@ void draw()
       //Plotting the shape and drawing the grid.
       mainGrid.draw_grid();
       
-      //This is the code to draw the blocks that have been plotted on the grid.
-      int pick_colour = shape_list.get(0).get_colour();
-      mainGrid.draw_block(pick_colour);
-      
       //This code will clear any blocks that are not moving.
-      if(millis() > (start_time + 200))
+      if(millis() > (start_time + 1000))
       {
         start_time = millis();
         mainGrid.clear_grid();
-        y_pos++;  
-        
-        
+        y_pos++;   
       }
       
       if(keyPressed)
@@ -121,13 +124,16 @@ void draw()
           
           mainGrid.clear_grid();
           
+          println("hi");
+          
           do
           {
-            shape_list.get(0).plot(x_pos, y_pos);
+            shape_list.get(0).get_position(x_pos, y_pos);
             shape_list.get(0).check_x();
             
           }while(result != 0);
           
+          shape_list.get(0).plot();
           delay(100);
         }
         
@@ -138,9 +144,25 @@ void draw()
             x_pos++;
           }
           mainGrid.clear_grid();
+          
+          do
+          {
+            shape_list.get(0).get_position(x_pos, y_pos);
+            shape_list.get(0).check_x();
+            
+          }while(result != 0);
+          
+          shape_list.get(0).plot();
           delay(100);
         } 
       }
+      
+      shape_list.get(0).get_position(x_pos, y_pos);
+      shape_list.get(0).plot();
+      
+      //This is the code to draw the blocks that have been plotted on the grid.
+      int pick_colour = shape_list.get(0).get_colour();
+      mainGrid.draw_block(pick_colour);
     }
   }
 }
