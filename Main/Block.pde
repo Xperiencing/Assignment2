@@ -81,6 +81,11 @@ abstract class Shape_base
     {
       mainGrid.grid_data[temp_positions[i][1]][temp_positions[i][0]] = type;
       mainGrid.grid_colour[temp_positions[i][1]][temp_positions[i][0]] = colour;
+      
+      if(type == 2 && temp_positions[i][1] < 6)
+      {
+        menu_check = 3;
+      }
     }
   }
   

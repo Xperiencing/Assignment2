@@ -83,6 +83,14 @@ void display_menu()
   
   if(function_check == 1)
   {
+    background(0);
+    
+    //Setting the text parameters.
+    textFont(tetris);
+    textAlign(CENTER);
+    textSize(40);
+    stroke(255);
+  
     noFill();
     rect(border, height * 1/8, width - (border * 2), height * 1/6);
     rect(border, height * 3/8, width - (border * 2), height * 1/6);
@@ -106,8 +114,20 @@ void display_menu()
       {
         difficulty = 0;
         copy_difficulty = difficulty;
+        
+        textFont(normal);
+        textSize(12);
+        textAlign(LEFT);
+        fill(255);
+    
+        text("Difficulty set EASY", border, border * 3);
       }
     }
+    
+    textFont(tetris);
+    textAlign(CENTER);
+    textSize(40);
+    stroke(255);
     
     //Printing to the screen the menu options.
     fill(prim_shape_colour[4]);
@@ -127,8 +147,20 @@ void display_menu()
       {
         difficulty = 1;
         copy_difficulty = difficulty;
+        
+        textFont(normal);
+        textSize(12);
+        textAlign(LEFT);
+        fill(255);
+    
+        text("Difficulty set MEDIUM", border, border * 3);
       }
     }
+    
+    textFont(tetris);
+    textAlign(CENTER);
+    textSize(40);
+    stroke(255);
     
     //Printing to the screen the menu options.
     fill(prim_shape_colour[5]);
@@ -148,6 +180,13 @@ void display_menu()
       {
         difficulty = 2;
         copy_difficulty = difficulty;
+        
+        textFont(normal);
+        textSize(12);
+        textAlign(LEFT);
+        fill(255);
+    
+        text("Difficulty set HARD", border, border * 3);
       }
     }
     

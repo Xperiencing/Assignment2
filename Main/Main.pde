@@ -102,13 +102,6 @@ void draw()
           for(i = 0; i < 1; i++)
           {
             shape_list.get(0).get_position(x_pos, y_pos);
-            shape_list.get(0).check_x();
-            
-            if(result != 0)
-            {
-              shape_list.get(0).reset_rotate();
-              break;
-            }
             
             shape_list.get(0).check_y();
             
@@ -117,6 +110,15 @@ void draw()
               shape_list.get(0).reset_rotate();
               break;    
             }
+            
+            shape_list.get(0).check_x();
+            
+            if(result != 0)
+            {
+              shape_list.get(0).reset_rotate();
+              break;
+            }
+            
           }
           
           rotate_cool = millis();
