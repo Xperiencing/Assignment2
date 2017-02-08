@@ -5,14 +5,19 @@
 void setup()
 {
   //Setting the size of the screen.
-  size(420, 620);
+  size(1020, 620);
   background(0);
   
-  menu_check = 0;
+  //Setting up the font for the menu screen.
+  tetris = createFont("tetris_block.ttf", 32);
+  textFont(tetris);
+  
+  //Setting the width of the grid at the start.
+  grid_width = 420;
   
   //Calculating the number of rows and columns that are in the grid that will be drawn.
   rows = (height - (border * 2))/spacing;
-  cols = (width - (border * 2))/spacing;
+  cols = (grid_width - (border * 2))/spacing;
   
   //This creates a new object of the grid class using the rows and cols variables.
   mainGrid = new Grid(rows, cols);
@@ -38,11 +43,18 @@ void draw()
   {
     case 0:
     {
-      add_arraylist();
-      menu_check = 1;
+      display_menu();
+      break;
     }
     
     case 1:
+    {
+      add_arraylist();
+      menu_check = 2;
+      break;
+    }
+    
+    case 2:
     {
       //Resetting the background each time.
       background(0);
@@ -160,6 +172,8 @@ void draw()
       //This is the code to draw the blocks that have been plotted on the grid.
       shape_list.get(0).get_colour();
       mainGrid.draw_block();
+      
+      break;
     }
   }
 }
@@ -171,11 +185,15 @@ void display_menu()
   textSize(40);
   stroke(255);
   
-  mainGrid.draw_grid();
+  //Printing to the screen the menu options.
+  fill(prim_shape_colour[3]);
+  text("PLAY", width/2, height * 1/4);
   
-  //text("Play", width/2, height * 1/4);
-  //text("Options", width/2, height * 1/2);
-  //text("Exit", width/2, height * 3/4);
+  fill(prim_shape_colour[2]);
+  text("OPTIONS", width/2, height * 1/2);
+  
+  fill(prim_shape_colour[1]);
+  text("EXIT", width/2, height * 3/4);
 }
 
 void add_arraylist()

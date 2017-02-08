@@ -33,7 +33,7 @@ class Grid
     //Drawing horizontal lines up until the edge of the screen
     while (i < height) 
     {
-      line(border, border + (z * spacing), width - border, border + (z * spacing));
+      line(border, border + (z * spacing), grid_width - border, border + (z * spacing));
     
       z++;
       i += spacing;
@@ -42,7 +42,7 @@ class Grid
     i = 0; z = 0;
   
     //Drawing vertical lines to complete the grid up until the end of the screen.
-    while (i < width) 
+    while (i < grid_width) 
     {
       line(border + (z * spacing), border, border + (z * spacing), height - border);
     
