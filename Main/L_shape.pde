@@ -31,5 +31,5 @@ class L_shape extends Shape_base implements Shape
     l.endShape(CLOSE);
     
     shape(l, 25, 25);
-  
+  }
 }

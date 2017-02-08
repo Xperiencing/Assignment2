@@ -14,5 +14,22 @@ class Line_shape extends Shape_base implements Shape
                              {0, 0, 0, -1, 0, -2, 0, 1}
                              };
   }
+  
+  void create_shape()
+  {
+    PShape line;
+    
+    line = createShape();
+    line.beginShape();
+    line.fill(255);
+    line.noStroke();
+    line.vertex(demo_x, demo_y);
+    line.vertex(demo_x, demo_y + (spacing * 4));
+    line.vertex(demo_x + spacing, demo_y + (spacing * 4));
+    line.vertex(demo_x + spacing, demo_y);
+    line.endShape(CLOSE);
+    
+    shape(line, 25, 25);
+  }
      
 }
