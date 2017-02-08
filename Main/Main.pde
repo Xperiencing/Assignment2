@@ -95,29 +95,41 @@ void draw()
       if(keyPressed)
       {
         //Rotating the shape if the up key is pressed.
-        if (keyCode == UP)
+        if (keyCode == UP && millis() > (rotate_cool + 100))
         {
           shape_list.get(0).rotate_shape();
           
-          do
+          for(i = 0; i < 1; i++)
           {
-            x_pos += result;
-            
             shape_list.get(0).get_position(x_pos, y_pos);
             shape_list.get(0).check_x();
             
-          }while(result != 0);
+            if(result != 0)
+            {
+              shape_list.get(0).reset_rotate();
+              break;
+            }
+            
+            shape_list.get(0).check_y();
+            
+            if(result != 0)
+            {
+              shape_list.get(0).reset_rotate();
+              break;    
+            }
+          }
           
-          delay(100);
+          rotate_cool = millis();
         }
         
+        //Moving the shape down much faster.
         if (keyCode == DOWN)
         {
           difficulty = 3;
         }
         
-        //If the left or right keys are pressed the shape will translate appropriately 
-        if (keyCode == LEFT)
+        //If the left or right keys are pressed the shape will translate appropriately. 
+        if (keyCode == LEFT && millis() > (move_cool + 100))
         {
           if(x_pos > 0)
           {
@@ -142,10 +154,12 @@ void draw()
           
           //After error checking 
           shape_list.get(0).plot(1);
-          delay(100);
+          
+          move_cool = millis();
         }
         
-        if(keyCode == RIGHT)
+        //Code to move shape to the right.
+        if(keyCode == RIGHT && millis() > (move_cool + 100))
         {
           if(x_pos < cols - 1)
           {
@@ -166,7 +180,9 @@ void draw()
           }while(result != 0);
           
           shape_list.get(0).plot(1);
-          delay(100);
+          
+          //Setting the cooldown timer.
+          move_cool = millis();
         } 
       }
       
@@ -181,96 +197,5 @@ void draw()
       
       break;
     }
-  }
-}
-
-void add_arraylist()
-{
-  for(i = 0; i < shape_pick.length; i += 2)
-  {
-    //Creating a test shape for the game.
-    if(shape_pick[i] == 0)
-    {
-      shape_list.add(new Line_shape(shape_pick[i + 1]));
-    }
-        
-    if(shape_pick[i] == 1)
-    {
-      shape_list.add(new Square_shape(shape_pick[i + 1]));
-    }
-        
-    if(shape_pick[i] == 2)
-    {
-      shape_list.add(new L_shape(shape_pick[i + 1]));
-    }                
-        
-    if(shape_pick[i] == 3)
-    {
-      shape_list.add(new J_shape(shape_pick[i + 1]));
-    }
-        
-    if(shape_pick[i] == 4)
-    {
-      shape_list.add(new Tee_shape(shape_pick[i + 1]));
-    }
-         
-    if(shape_pick[i] == 5)
-    {
-      shape_list.add(new Z_shape(shape_pick[i + 1]));
-    }        
-        
-    if(shape_pick[i] == 6)
-    {
-      shape_list.add(new S_shape(shape_pick[i + 1]));
-    }        
-  } 
-      
-  x_pos = (int)random(0, cols - 1);
-  y_pos = 2;
-      
-  do
-  {
-    shape_list.get(0).get_position(x_pos, y_pos);
-    shape_list.get(0).check_x();
-            
-  }while(result != 0);
-          
-  shape_list.get(0).plot(1);    
-}
-
-//This will add a new shape onto the queue
-void create_shape()
-{
-  int [] temp_array =  new int [shape_pick.length];
-  for(i = 2, z = 0; i < 8; i += 2, z += 2)
-  {
-    temp_array[z] = shape_pick[i];
-    temp_array[z + 1] = shape_pick[i + 1];
-  }
-  
-  z = 6;
-  
-  temp_array[z] = (int)random(0, 7);
-  temp_array[z + 1] = (int)random(0,6);
-  
-  shape_pick = temp_array;
-  
-  remove_arraylist();
-  add_arraylist();
-}
-
-void remove_arraylist()
-{
-  for(i = 0; i < shape_list.size(); i++)
-  {
-    shape_list.remove(i);
-  }
-}
-
-void keyReleased()
-{
-  if (keyCode == DOWN)
-  {
-    copy_difficulty = difficulty;
   }
 }

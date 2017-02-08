@@ -15,6 +15,11 @@ class Square_shape extends Shape_base implements Shape
     
   }
   
+  void reset_rotate()
+  {
+    
+  }
+  
   void create_shape()
   {
     fill(255);

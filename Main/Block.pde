@@ -129,6 +129,12 @@ abstract class Shape_base
     return(colour);
   }
   
+  void reset_rotate()
+  {
+    //Resetting the change that just occured to avoid the shape going out of bounds.
+    cur_state += 1;
+  }
+  
 }
 
 interface Shape
@@ -136,9 +142,12 @@ interface Shape
   void get_position(int x, int y); 
   void plot(int type);
   void rotate_shape();
+  void reset_rotate();
   
   void check_x();
   void check_y();
+  
+  void create_shape();
   
   int get_colour();
 }

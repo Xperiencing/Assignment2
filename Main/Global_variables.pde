@@ -39,10 +39,13 @@ float start_time;
 
 int demo_x, demo_y;
 
-int difficulty, copy_difficulty;
+int difficulty = 0, copy_difficulty;
 long score = 0, highscore;
 
 int [][] temp_positions;
 
 //Arraylist to store each of the objects.
 ArrayList<Shape> shape_list = new ArrayList<Shape>();
+
+//Cooldowns for the different actions in the game.
+float rotate_cool, move_cool;
