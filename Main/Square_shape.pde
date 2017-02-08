@@ -15,4 +15,10 @@ class Square_shape extends Shape_base implements Shape
     
   }
   
+  void create_shape()
+  {
+    fill(255);
+    noStroke();
+    rect(demo_x, demo_y, spacing * 2, spacing * 2);
+  }
 }
