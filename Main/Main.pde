@@ -103,6 +103,14 @@ void draw()
           {
             shape_list.get(0).get_position(x_pos, y_pos);
             
+            shape_list.get(0).check_rotate();
+            
+            if(result != 0)
+            {
+              shape_list.get(0).reset_rotate();
+              break;    
+            }
+            
             shape_list.get(0).check_y();
             
             if(result != 0)

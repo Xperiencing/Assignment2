@@ -20,6 +20,11 @@ class Square_shape extends Shape_base implements Shape
     
   }
   
+  void check_rotate()
+  {
+      
+  }
+  
   void create_shape()
   {
     fill(prim_shape_colour[this.colour]);

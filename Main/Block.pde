@@ -114,6 +114,31 @@ abstract class Shape_base
     }
   }
   
+  void check_rotate()
+  {
+    for(i = 0; i < 4; i++)
+    {
+      if(temp_positions[i][0] < 0)
+      {
+        result = 1;
+        break;
+      }
+      
+      else if(temp_positions[i][0] > (cols - 1))
+      {
+        result = -1;
+        break;
+      }
+      
+      if(temp_positions[i][1] > (rows - 1))
+      {
+        result = -1;
+        break;
+      }
+    }
+  }
+      
+  
   void rotate_shape()
   {
     //Changing the state of the shape so it rotates
@@ -153,6 +178,7 @@ interface Shape
   void check_y();
   
   void create_shape();
+  void check_rotate();
   
   int get_colour();
 }
