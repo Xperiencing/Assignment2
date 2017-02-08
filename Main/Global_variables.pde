@@ -1,6 +1,6 @@
 int menu_check = 0, function_check = 0;
 int result = 0;
-PFont tetris;
+PFont tetris, normal;
 
 //Index variables used for counters and for loops.
 int i = 0, z = 0;
