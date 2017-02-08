@@ -41,12 +41,14 @@ void draw()
   //Menu Check will change depensing on what stage of the game the user is currently on.
   switch (menu_check)
   {
+    //Displaying the start up menu.
     case 0:
     {
       display_menu();
       break;
     }
     
+    //Creating the shapes and storing them in an array list.
     case 1:
     {
       add_arraylist();
@@ -185,15 +187,68 @@ void display_menu()
   textSize(40);
   stroke(255);
   
+  noFill();
+  rect(width/4, height * 1/8, width/2, height * 1/6);
+  rect(width/4, height * 3/8, width/2, height * 1/6);
+  rect(width/4, height * 5/8, width/2, height * 1/6);
+  
   //Printing to the screen the menu options.
   fill(prim_shape_colour[3]);
   text("PLAY", width/2, height * 1/4);
   
+  //Checking if the play option is pressed.
+  if((mouseX > width/4) 
+      && (mouseX < (width * 3/4)) 
+      && (mouseY > (height * 1/8)) 
+      && (mouseY < (height * (1/8f + 1/6f))))
+  {
+    noFill();
+    stroke(prim_shape_colour[3]);
+    rect(width/4, height * 1/8, width/2, height * 1/6);
+
+    if(mousePressed)
+    {
+      menu_check = 1;  
+    }
+  }
+  
   fill(prim_shape_colour[2]);
   text("OPTIONS", width/2, height * 1/2);
   
+  //Checking if the play option is pressed.
+  if((mouseX > width/4) 
+      && (mouseX < (width * 3/4)) 
+      && (mouseY > (height * 3/8)) 
+      && (mouseY < (height * (3/8f + 1/6f))))
+  {
+    noFill();
+    stroke(prim_shape_colour[2]);
+    rect(width/4, height * 3/8, width/2, height * 1/6);
+    
+    if(mousePressed)
+    {
+      function_check = 1;  
+    }
+  }
+  
   fill(prim_shape_colour[1]);
   text("EXIT", width/2, height * 3/4);
+  
+  //Checking if the exit option is pressed.
+  if((mouseX > width/4) 
+      && (mouseX < (width * 3/4)) 
+      && (mouseY > (height * 5/8)) 
+      && (mouseY < (height * (5/8f + 1/6f))))
+  {
+    noFill();
+    stroke(prim_shape_colour[1]);
+    rect(width/4, height * 5/8, width/2, height * 1/6);
+    
+    if(mousePressed)
+    {
+      exit();
+    }
+  }
 }
 
 void add_arraylist()
