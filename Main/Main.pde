@@ -12,6 +12,10 @@ void setup()
   tetris = createFont("tetris_block.ttf", 32);
   normal = createFont("Arial", 12);
   
+  //Setting up the table to load the highscore
+  Table t = loadTable("highscore.csv", "header");
+  highscore = t.getInt(0, 0);
+  
   //Setting the width of the grid at the start.
   grid_width = 420;
   
@@ -65,7 +69,7 @@ void draw()
       mainGrid.draw_grid();
       
       //This code will clear any blocks that are not moving.
-      if(millis() > (start_time + speed))
+      if(millis() > (start_time + speed[copy_difficulty]))
       {
         start_time = millis();
         mainGrid.clear_grid();
@@ -109,7 +113,7 @@ void draw()
         
         if (keyCode == DOWN)
         {
-          speed = 200;
+          difficulty = 3;
         }
         
         //If the left or right keys are pressed the shape will translate appropriately 
@@ -267,6 +271,6 @@ void keyReleased()
 {
   if (keyCode == DOWN)
   {
-    speed = 1000;  
+    copy_difficulty = difficulty;
   }
 }

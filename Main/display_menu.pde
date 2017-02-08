@@ -96,7 +96,8 @@ void display_menu()
   
       if(mousePressed)
       {
-
+        difficulty = 0;
+        copy_difficulty = difficulty;
       }
     }
     
@@ -116,7 +117,8 @@ void display_menu()
   
       if(mousePressed)
       {
-
+        difficulty = 1;
+        copy_difficulty = difficulty;
       }
     }
     
@@ -134,9 +136,10 @@ void display_menu()
       stroke(prim_shape_colour[5]);
       rect(border, height * 5/8, width - (border * 2), height * 1/6);
   
-      if(mousePressed == true)
+      if(mousePressed)
       {
-
+        difficulty = 2;
+        copy_difficulty = difficulty;
       }
     }
     

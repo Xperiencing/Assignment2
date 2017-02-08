@@ -29,10 +29,18 @@ int rows, cols;
 int grid_width;
 
 //Variables for the tetris shapes.
-int speed = 1000;
+int [] speed = {1000, 500, 200, 100};
+int [] score_shape = {10, 20, 30};
+int [] score_line = {100, 150, 200};
+
 int x_pos, y_pos;
 int [] shape_pick;
 float start_time;
+
+int demo_x, demo_y;
+
+int difficulty, copy_difficulty;
+long score = 0, highscore;
 
 int [][] temp_positions;
 
