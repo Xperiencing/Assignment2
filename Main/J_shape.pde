@@ -14,7 +14,7 @@ class J_shape extends Shape_base implements Shape
                              };
   }
   
-  void create_j()
+  void create_shape()
   {
     PShape j;  // The PShape object
 

@@ -14,4 +14,22 @@ class L_shape extends Shape_base implements Shape
                              };
   }
   
+  void create_shape()
+  {
+    PShape l;
+    
+    l = createShape();
+    l.beginShape();
+    l.fill(255);
+    l.noStroke();
+    l.vertex(demo_x, demo_y);
+    l.vertex(demo_x + (spacing * 3), demo_y);
+    l.vertex(demo_x + (spacing * 3), demo_y + spacing);
+    l.vertex(demo_x + spacing, demo_y + spacing);
+    l.vertex(demo_x + spacing, demo_y + (spacing * 2));
+    l.vertex(demo_x, demo_y + (spacing * 2));
+    l.endShape(CLOSE);
+    
+    shape(l, 25, 25);
+  
 }
