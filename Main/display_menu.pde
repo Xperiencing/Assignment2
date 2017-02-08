@@ -31,6 +31,8 @@ void display_menu()
       if(mousePressed)
       {
         menu_check = 1;  
+        score = 0;
+        mainGrid.clear_grid_full();
       }
     }
     
@@ -68,6 +70,12 @@ void display_menu()
       
       if(mousePressed)
       {
+        Table t= loadTable("highscore.csv", "header");
+        t.clearRows();
+        TableRow newRow = t.addRow();
+        newRow.setInt("score", int(highscore));
+        
+        saveTable(t, "data/highscore.csv");
         exit();
       }
     }

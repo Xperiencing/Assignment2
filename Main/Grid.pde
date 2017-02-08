@@ -100,6 +100,26 @@ class Grid
     }
   }
   
+  //A full clear to reset the game.
+  void clear_grid_full()
+  {
+    for(i = 0; i < rows; i++)
+    {
+      for(z = 0; z < cols; z++)
+      {
+        if(grid_data[i][z] == 1)
+        {
+          grid_data[i][z] = 0;
+        } 
+        
+        if(grid_data[i][z] == 2)
+        {
+          grid_data[i][z] = 0;
+        } 
+      }
+    }
+  }
+  
   //Checking the grid to see if any lines are complete.
   void check_lines()
   { 
@@ -118,7 +138,6 @@ class Grid
           //This will check if all cols in the row are set
           if(counter == (cols - 1))
           {
-            println("hi");
             //Calling clear line to delete the row.
             clear_line(i);
           }

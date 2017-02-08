@@ -201,7 +201,50 @@ void draw()
       //Printing out the highscore and the current score.
       scores();
       
+      if(keyPressed)
+      { 
+        if(key == 32)
+        {
+          menu_check = 0;
+        }
+      }
+      
       break;
+    }
+    
+    //This is the game over screen if a loss has occured.
+    case 3:
+    {
+      background(0);
+      fill(255);
+      textAlign(CENTER);
+      textSize(50);
+      textFont(tetris);
+      
+      text("GAME OVER", width/2, height/2);
+      
+      textSize(18);
+      textFont(normal);
+      
+      text("Press spacebar to go back to main menu.", width/2, height * 3/4);
+      
+      //Creating a way to get back to the main menu.
+      if(keyPressed)
+      { 
+        if(key == 32)
+        {
+          menu_check = 0;
+          
+          Table t= loadTable("highscore.csv", "header");
+          t.clearRows();
+          TableRow newRow = t.addRow();
+          newRow.setInt("score", int(highscore));
+        
+          saveTable(t, "data/highscore.csv");
+          
+          break;
+        }
+      }
     }
   }
 }
