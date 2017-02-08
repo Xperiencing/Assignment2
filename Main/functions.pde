@@ -64,21 +64,67 @@ void create_shape()
   
   z = 6;
   
-  temp_array[z] = (int)random(0, 7);
-  temp_array[z + 1] = (int)random(0,6);
+  temp_array[z] = int(random(0, 7));
+  temp_array[z + 1] = int(random(0,6));
   
   shape_pick = temp_array;
   
   remove_arraylist();
   add_arraylist();
+  
+  score += score_shape[difficulty];
+  
+  if(score > highscore)
+  {
+    highscore = score;
+  }
 }
 
 void remove_arraylist()
-{
-  println(shape_list.size());
-  
+{ 
   for(i = (shape_list.size() - 1); i >= 0; i--)
   {
     shape_list.remove(i);
   }
+}
+
+void next_shapes()
+{
+  //Setting the font to Ariel and setting text parameters.
+  textFont(normal);
+  textSize(18);
+  textAlign(LEFT);
+  fill(255);
+        
+  //Setting x and y positions.
+  demo_x = width/2;
+  demo_y = height * 1/5;;
+       
+  text("NEXT SHAPES", demo_x - 15, demo_y - 10);
+        
+  for(i = 1; i < shape_list.size(); i++)
+  {
+    demo_y = (height * i/4);
+    shape_list.get(i).create_shape();
+  }
+}
+
+//This will print on the right hand side of the screen the current scores.
+void scores()
+{
+  fill(255);
+  
+  //Setting the positions of the text.
+  demo_x = width * 4/5;
+  demo_y = height * 1/3;
+  
+  textAlign(CENTER);
+  text("Highscore:", demo_x, demo_y);
+  text(int(highscore), demo_x, demo_y + 20);
+  
+  demo_y = height * 2/3;
+  
+  text("Current score:", demo_x, demo_y);
+  text(int(score), demo_x, demo_y + 20);
+  
 }

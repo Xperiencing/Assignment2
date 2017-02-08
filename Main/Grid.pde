@@ -103,17 +103,22 @@ class Grid
   //Checking the grid to see if any lines are complete.
   void check_lines()
   { 
+    int counter;
+    
     for(i = rows - 1; i >= 0; i--)
     {
+      counter = 0;
+      
       for(z = 0; z < cols - 1; z++)
       {
-        if(grid_data[i][z] == grid_data[i][z + 1])
+        if(grid_data[i][z] == grid_data[i][z + 1] && grid_data[i][z] != 0)
         {
-          result = 1;
+          counter++;
           
           //This will check if all cols in the row are set
-          if(z + 1 == cols - 1)
+          if(counter == (cols - 1))
           {
+            println("hi");
             //Calling clear line to delete the row.
             clear_line(i);
           }
@@ -123,7 +128,6 @@ class Grid
         //any of the blocks are not set.
         else
         {
-          result = 0;
           break;  
         }
       }
@@ -133,6 +137,14 @@ class Grid
   //This function will delete the current line and move all rows above down.
   void clear_line(int row)
   {
+    //Getting points for the clearing of a line.
+    score += score_line[difficulty];
+  
+    if(score > highscore)
+    {
+      highscore = score;
+    }
+  
     //Clearing all data from the line before continuing.
     for(i = 0; i < cols; i++)
     {

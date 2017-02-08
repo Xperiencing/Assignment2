@@ -195,23 +195,11 @@ void draw()
       shape_list.get(0).get_colour();
       mainGrid.draw_block();
       
-      //Setting the font to Ariel and setting text parameters.
-      textFont(normal);
-      textSize(18);
-      textAlign(LEFT);
-      fill(255);
+      //Calling the function to display the next shapes in the array list.
+      next_shapes();
       
-      //Setting x and y positions.
-      demo_x = width/2;
-      demo_y = height * 1/5;;
-      
-      text("NEXT SHAPES", demo_x - 15, demo_y - 10);
-      
-      for(i = 1; i < shape_list.size(); i++)
-      {
-        demo_y = (height * i/4);
-        shape_list.get(i).create_shape();
-      }
+      //Printing out the highscore and the current score.
+      scores();
       
       break;
     }
