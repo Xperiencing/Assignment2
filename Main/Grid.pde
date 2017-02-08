@@ -102,8 +102,8 @@ class Grid
   
   //Checking the grid to see if any lines are complete.
   void check_lines()
-  {
-    for(i = 0; i < rows; i++)
+  { 
+    for(i = rows - 1; i >= 0; i--)
     {
       for(z = 0; z < cols - 1; z++)
       {
@@ -111,11 +111,16 @@ class Grid
         {
           result = 1;
           
+          //This will check if all cols in the row are set
           if(z + 1 == cols - 1)
           {
+            //Calling clear line to delete the row.
             clear_line(i);
           }
         }
+        
+        //Breaking out of the loop to the next row if 
+        //any of the blocks are not set.
         else
         {
           result = 0;
@@ -125,8 +130,22 @@ class Grid
     }
   }
   
+  //This function will delete the current line and move all rows above down.
   void clear_line(int row)
   {
+    //Clearing all data from the line before continuing.
+    for(i = 0; i < cols; i++)
+    {
+      grid_data[row][i] = 0;
+    }
     
+    //Moving each row dow one after the other.
+    for(i = row; i > 0; i--)
+    {
+      for(z = 0; z < cols; z++)
+      {
+        grid_data[i][z] = grid_data[i - 1][z];
+      }
+    }
   }
 }

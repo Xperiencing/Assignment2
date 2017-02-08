@@ -36,5 +36,3 @@ int [][] temp_positions;
 
 //Arraylist to store each of the objects.
 ArrayList<Shape> shape_list = new ArrayList<Shape>();
-
-int j = 0;

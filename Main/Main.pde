@@ -68,6 +68,7 @@ void draw()
           shape_list.get(0).get_position(x_pos, y_pos);
           shape_list.get(0).plot(2);
           
+          mainGrid.check_lines();
           create_shape();
         } 
       }
