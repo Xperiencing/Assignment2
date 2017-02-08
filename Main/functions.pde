@@ -39,7 +39,7 @@ void add_arraylist()
     }        
   } 
   
-  x_pos = (int)random(0, cols - 1);
+  x_pos = (int)random(2, cols - 3);
   y_pos = 2;
       
   do
