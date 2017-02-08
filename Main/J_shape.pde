@@ -20,8 +20,8 @@ class J_shape extends Shape_base implements Shape
 
     j = createShape();
     j.beginShape();
-    j.fill(255);
-    j.noStroke();
+    j.fill(prim_shape_colour[this.colour]);
+    j.stroke(255);
     j.vertex(demo_x, demo_y);
     j.vertex(demo_x + spacing, demo_y);
     j.vertex(demo_x + spacing, demo_y + spacing);
@@ -30,6 +30,6 @@ class J_shape extends Shape_base implements Shape
     j.vertex(demo_x, demo_y + (spacing * 2));
     j.endShape(CLOSE);
     
-    shape(j, 25, 25);
+    shape(j);
   }
 }

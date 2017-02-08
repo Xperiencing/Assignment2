@@ -20,8 +20,8 @@ class Tee_shape extends Shape_base implements Shape
     
     tee = createShape();
     tee.beginShape();
-    tee.fill(255);
-    tee.noStroke();
+    tee.fill(prim_shape_colour[this.colour]);
+    tee.stroke(255);
     tee.vertex(demo_x, demo_y);
     tee.vertex(demo_x + spacing, demo_y);
     tee.vertex(demo_x + spacing, demo_y - spacing);
@@ -32,7 +32,7 @@ class Tee_shape extends Shape_base implements Shape
     tee.vertex(demo_x, demo_y + spacing);
     tee.endShape(CLOSE);
     
-    shape(tee, 25, 25);
+    shape(tee);
   }
 
 }

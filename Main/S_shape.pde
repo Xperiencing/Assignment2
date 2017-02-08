@@ -20,8 +20,8 @@ class S_shape extends Shape_base implements Shape
     
     s = createShape();
     s.beginShape();
-    s.fill(255);
-    s.noStroke();
+    s.fill(prim_shape_colour[this.colour]);
+    s.stroke(255);
     s.vertex(demo_x, demo_y);
     s.vertex(demo_x + spacing, demo_y);
     s.vertex(demo_x + spacing, demo_y - spacing);
@@ -32,7 +32,7 @@ class S_shape extends Shape_base implements Shape
     s.vertex(demo_x, demo_y + spacing);
     s.endShape(CLOSE);
     
-    shape(s, 25, 25);
+    shape(s);
   }
   
 }

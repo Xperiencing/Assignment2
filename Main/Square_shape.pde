@@ -22,8 +22,8 @@ class Square_shape extends Shape_base implements Shape
   
   void create_shape()
   {
-    fill(255);
-    noStroke();
+    fill(prim_shape_colour[this.colour]);
+    stroke(255);
     rect(demo_x, demo_y, spacing * 2, spacing * 2);
   }
 }

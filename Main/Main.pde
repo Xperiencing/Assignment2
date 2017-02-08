@@ -125,7 +125,7 @@ void draw()
         //Moving the shape down much faster.
         if (keyCode == DOWN)
         {
-          difficulty = 3;
+          copy_difficulty = 3;
         }
         
         //If the left or right keys are pressed the shape will translate appropriately. 
@@ -195,7 +195,33 @@ void draw()
       shape_list.get(0).get_colour();
       mainGrid.draw_block();
       
+      //Setting the font to Ariel and setting text parameters.
+      textFont(normal);
+      textSize(18);
+      textAlign(LEFT);
+      fill(255);
+      
+      //Setting x and y positions.
+      demo_x = width/2;
+      demo_y = height * 1/5;;
+      
+      text("NEXT SHAPES", demo_x - 15, demo_y - 10);
+      
+      for(i = 1; i < shape_list.size(); i++)
+      {
+        demo_y = (height * i/4);
+        shape_list.get(i).create_shape();
+      }
+      
       break;
     }
+  }
+}
+
+void keyReleased()
+{
+  if (keyCode == DOWN)
+  {
+    copy_difficulty = difficulty;
   }
 }

@@ -38,7 +38,7 @@ void add_arraylist()
       shape_list.add(new S_shape(shape_pick[i + 1]));
     }        
   } 
-      
+  
   x_pos = (int)random(0, cols - 1);
   y_pos = 2;
       
@@ -75,7 +75,9 @@ void create_shape()
 
 void remove_arraylist()
 {
-  for(i = 0; i < shape_list.size(); i++)
+  println(shape_list.size());
+  
+  for(i = (shape_list.size() - 1); i >= 0; i--)
   {
     shape_list.remove(i);
   }
