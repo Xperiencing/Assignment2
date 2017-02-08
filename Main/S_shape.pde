@@ -14,4 +14,25 @@ class S_shape extends Shape_base implements Shape
                              };
   }
   
+  void create_shape()
+  {
+    PShape s;
+    
+    s = createShape();
+    s.beginShape();
+    s.fill(255);
+    s.noStroke();
+    s.vertex(demo_x, demo_y);
+    s.vertex(demo_x + spacing, demo_y);
+    s.vertex(demo_x + spacing, demo_y - spacing);
+    s.vertex(demo_x + (spacing * 3), demo_y - spacing);
+    s.vertex(demo_x + (spacing * 3), demo_y);
+    s.vertex(demo_x + (spacing * 2), demo_y);
+    s.vertex(demo_x + (spacing * 2), demo_y + spacing);
+    s.vertex(demo_x, demo_y + spacing);
+    s.endShape(CLOSE);
+    
+    shape(s, 25, 25);
+  }
+  
 }
