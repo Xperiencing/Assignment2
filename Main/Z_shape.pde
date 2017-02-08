@@ -14,4 +14,24 @@ class Z_shape extends Shape_base implements Shape
                              };
   }
   
+  void create_shape()
+  {
+    PShape z;
+    
+    z = createShape();
+    z.beginShape();
+    z.fill(255);
+    z.noStroke();
+    z.vertex(demo_x, demo_y);
+    z.vertex(demo_x + spacing, demo_y);
+    z.vertex(demo_x + spacing, demo_y - spacing);
+    z.vertex(demo_x + (spacing * 3), demo_y - spacing);
+    z.vertex(demo_x + (spacing * 3), demo_y);
+    z.vertex(demo_x + (spacing * 2), demo_y);
+    z.vertex(demo_x + (spacing * 2), demo_y + spacing);
+    z.vertex(demo_x, demo_y + spacing);
+    z.endShape(CLOSE);
+    
+    shape(z, 25, 25);
+  }
 }
